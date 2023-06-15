@@ -1,0 +1,15 @@
+.file-input {
+  display: none;
+}
+
+
+button {
+  margin:10px 7px;
+}
+button {
+  margin:10px 7px;
+}
+
+mat-form-field {
+  width: calc(100% - 2.5rem)
+}

@@ -1,0 +1,31 @@
+
+button {
+  margin:10px 7px;
+}
+button {
+  margin:10px 7px;
+}
+
+mat-form-field {
+  width: calc(100% - 2.5rem)
+}
+
+select {
+  outline: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 1em 0;
+  margin: 10px 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+

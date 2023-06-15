@@ -1,0 +1,126 @@
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form (ngSubmit)="signup()" [formGroup]="signupForm">
+      <h1>Create Account</h1>
+      <!--
+        <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+-->
+      <span>or use your email for registration</span>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput="" formControlName="password1">
+        <mat-error *ngIf="signupForm.get('password1')?.hasError('minlength') && !signupForm.get('password1')?.hasError('required')">
+          Please enter a valid password
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Password Confirmation</mat-label>
+        <input type="password" matInput="" formControlName="password2">
+
+        <mat-error *ngIf="signupForm.get('password2')?.hasError('matching')">
+          Matching Password is <strong>Required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Firstname</mat-label>
+        <input formControlName="first_name" matInput="" placeholder="JohnDoe02">
+        <mat-error *ngIf="signupForm.get('first_name')?.hasError('required')">
+          Firstname is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label> Lastname</mat-label>
+        <input formControlName="last_name" matInput="" placeholder="JohnDoe02">
+        <mat-error *ngIf="signupForm.get('last_name')?.hasError('required')">
+          Lastname is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput="" placeholder="JohnDoe02">
+        <mat-error *ngIf="signupForm.get('username')?.hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="wrapper">
+        <input (click)="onClickstudent()" type="radio" name="select" id="option-1">
+        <input (click)="onClickeducator()" type="radio" name="select" id="option-2">
+        <label for="option-1" class="option option-1">
+          <div class="dot"></div>
+          <span>Student</span>
+        </label>
+        <label for="option-2" class="option option-2">
+          <div class="dot"></div>
+          <span>Educator</span>
+        </label>
+      </div>
+      <button type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your account</span>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="signupForm.hasError('email') && !signupForm.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="signupForm.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput="" formControlName="password">
+        <mat-error *ngIf="signupForm.hasError('password') && !signupForm.hasError('required')">
+          Please enter a valid password
+        </mat-error>
+        <mat-error *ngIf="signupForm.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <a href="#">Forgot your password?</a>
+      <button type="submit" [disabled]="!loginForm.valid">Sign In</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To keep connected with us please login with your personal info</p>
+        <button class="ghost" id="signIn" (click)="switch_left()">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us</p>
+        <button class="ghost" id="signUp" (click)="switch_right()">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>

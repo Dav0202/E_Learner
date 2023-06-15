@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>MyChat</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <!-- <script src='main.js'></script> -->
+</head>
+
+<body>
+
+  <main>
+    <section id="room-name-wrapper">
+      <p class="mode-switch" >Room name {{CHANNEL_NAME}}</p>
+    </section>
+
+    <div id="video-streams">
+
+      <div class="video-container" id="user-container-{{token.uid}}">
+        <div class="video-player" id="user-{{token.uid}}"></div>
+        <div class="username-wrapper"><span class="user-name">{{localmember[0]?.name}}</span></div>
+      </div>
+    </div>
+
+    <section id="controls-wrapper">
+      <div class="icon-wrapper">
+        <span (click)= "audioOn()"  id="mic-btn" class="control-icon material-symbols-outlined">
+          mic
+          </span>
+      </div>
+
+      <div class="icon-wrapper">
+        <span (click)= "muteon()"  id="camera-btn" class="control-icon material-symbols-outlined">
+          videocam
+          </span>
+      </div>
+
+      <div  class="icon-wrapper">
+          <span (click)= "screenshare()" id="screen-btn" class="control-icon material-symbols-outlined">
+            screen_share
+            </span>
+      </div>
+
+
+      <div class="icon-wrapper">
+        <span (click)= "leave()" id="leave-btn" class="control-icon material-symbols-outlined">
+          logout
+          </span>
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

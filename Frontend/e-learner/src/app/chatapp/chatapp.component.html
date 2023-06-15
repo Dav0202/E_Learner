@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <title>Chat App</title>
+</head>
+
+<body>
+  <section class="msger">
+
+    <main #container class="msger-chat">
+      <div  id="chat-log">
+        <div *ngFor="let item of messages | reversepipe ">
+           <!--
+          <div class="msg left-msg">
+
+                          <div class="msg-img" style="background-image: url(https://bootdey.com/img/Content/avatar/avatar7.png)">
+            </div>
+
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">BOT</div>
+                <div class="msg-info-time">{{item.created | datepipe }}</div>
+              </div>
+
+              <div class="msg-text">
+                {{ item.body }}
+              </div>
+            </div>
+          </div>
+            -->
+
+          <div [ngClass] = " item.sender == username2 ? 'msg right-msg' : 'msg left-msg'">
+            <div class="msg-img" style="background-image: url(https://bootdey.com/img/Content/avatar/avatar7.png)">
+            </div>
+
+            <div class="msg-bubble">
+              <div class="msg-info">
+                <div class="msg-info-name">{{item.sender}}</div>
+                <div class="msg-info-time">{{item.created | datepipe }}</div>
+              </div>
+
+              <div class="msg-text">
+                {{ item.body }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <form [formGroup]="messageform" (ngSubmit)="sendmessage()" class="msger-inputarea">
+      <input type="text" formControlName="body" class="form-control" placeholder="Enter text here...">
+
+    </form>
+  </section>
+  <!--
+    <div class="container">
+    <div class="row clearfix">
+      <div class="col-lg-12">
+        <div class="card chat-app">
+          <div class="chat">
+
+            <div #container class="chat-history">
+              <ul  id="chat-log" class="m-b-0">
+                <li *ngFor="let item of messages | reversepipe " class="clearfix">
+                  <div class="message-data text-right">
+                    <span class="message-data-time">{{item.created | datepipe }}</span>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                  </div>
+                  <div class="message other-message float-right"> {{ item.body }}</div>
+                </li>
+              </ul>
+            </div>
+            <form [formGroup]="messageform" (ngSubmit)="sendmessage()">
+            <div class="chat-message clearfix">
+              <div class="input-group mb-0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-send"></i></span>
+                  </div>
+                  <input type="text" formControlName="body" class="form-control" placeholder="Enter text here...">
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+  <!--
+    <div class="right-side">
+    <button class="btn-close-right">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x-circle" viewBox="0 0 24 24">
+        <defs></defs>
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M15 9l-6 6M9 9l6 6"></path>
+      </svg>
+    </button>
+    <div class="chat-container">
+      <div class="chat-header">
+        <button class="chat-header-button">
+         Live Chat
+        </button>
+      </div>
+      <div class="chat-area">
+         <div class="message-wrapper">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Ryan Patrick</p>
+            <div class="message">Helloo team!😍</div>
+          </div>
+        </div>
+         <div class="message-wrapper">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Andy Will</p>
+            <div class="message">Hello! Can you hear me?🤯 <a class="mention">@ryanpatrick</a></div>
+          </div>
+        </div>
+        <div class="message-wrapper">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Jessica Bell</p>
+            <div class="message">Hi team! Let's get started it.</div>
+          </div>
+        </div>
+        <div class="message-wrapper reverse">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Emmy Lou</p>
+            <div class="message">Good morning!🌈</div>
+          </div>
+        </div>
+         <div class="message-wrapper">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1576110397661-64a019d88a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Tim Russel</p>
+            <div class="message">New design document⬇️</div>
+            <div class="message-file">
+              <div class="icon sketch">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="#ffd54f" d="M96 191.02v-144l160-30.04 160 30.04v144z"/>
+                  <path fill="#ffecb3" d="M96 191.02L256 16.98l160 174.04z"/>
+                  <path fill="#ffa000" d="M0 191.02l256 304 256-304z"/>
+                  <path fill="#ffca28" d="M96 191.02l160 304 160-304z"/>
+                  <g fill="#ffc107">
+                    <path d="M0 191.02l96-144v144zM416 47.02v144h96z"/>
+                  </g>
+                </svg>
+              </div>
+              <div class="file-info">
+                <div class="file-name">NewYear.sketch</div>
+                <div class="file-size">120 MB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="message-wrapper">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Ryan Patrick</p>
+            <div class="message">Hi team!❤️</div>
+            <div class="message">I downloaded the file <a class="mention">@timrussel</a></div>
+          </div>
+        </div>
+         <div class="message-wrapper reverse">
+          <div class="profile-picture">
+            <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="pp">
+          </div>
+          <div class="message-content">
+            <p class="name">Emmy Lou</p>
+            <div class="message">Woooww! Awesome❤️</div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-typing-area-wrapper">
+        <div class="chat-typing-area">
+          <input type="text" placeholder="Type your meesage..." class="chat-input">
+          <button class="send-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send" viewBox="0 0 24 24">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+-->
+</body>
+
+</html>

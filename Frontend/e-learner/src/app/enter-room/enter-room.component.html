@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <h1>Video Call</h1>
+  <p>Connect to video call</p>
+  <form [formGroup]="streamform" (ngSubmit)="msgToParent()">
+    <div class="row">
+
+      <input formControlName="roomname" type="text" class="form-control form-group" placeholder="Enter RoomName" />
+    </div>
+    <div class="row">
+
+      <input formControlName="name" type="text" class="form-control form-group" placeholder="Enter your Name" />
+    </div>
+    <button class="contact_form_submit">Join Stream</button>
+  </form>
+</body>
+
+</html>
